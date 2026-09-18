@@ -1,12 +1,17 @@
 :root {
-    --navy: #17395b;
-    --blue: #dff3ff;
-    --sky: #55b8e8;
-    --red: #eabf37;
-    --yellow: #fff1a8;
-    --ink: #19344d;
-    --muted: #678096;
-    --paper: #fffef7;
+    --navy: #3282d3;
+    --phone-navy: #0d315d;
+    --blue: #e5f2ff;
+    --sky: #4b96df;
+    --red: #ddc350;
+    --yellow: #fff0bf;
+    --blue-50: #f7fbff;
+    --blue-100: #e8f4ff;
+    --gold-50: #fffaf0;
+    --gold-100: #fff2cb;
+    --ink: #123d70;
+    --muted: #5d7490;
+    --paper: #fffdf7;
 }
 
 * {
@@ -16,7 +21,7 @@
 body {
     margin: 0;
     color: var(--ink);
-    background: var(--paper);
+    background: linear-gradient(180deg, var(--blue-50), var(--paper) 420px);
     font-family: 'DM Sans', sans-serif
 }
 
@@ -31,10 +36,11 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #fffef8;
-    border-bottom: 1px solid #edf3f7;
+    background: linear-gradient(100deg, rgb(255 253 247 / .94), rgb(247 251 255 / .94));
+    border-bottom: 1px solid #dceafb;
     position: relative;
-    z-index: 2
+    z-index: 2;
+    backdrop-filter: blur(12px)
 }
 
 .brand {
@@ -62,29 +68,47 @@ a {
     align-items: center;
     font-size: 14px;
     font-weight: 600;
-    color: #49667d
+    color: #4b6785
 }
 
 .navlinks a:hover {
-    color: #c79b17
+    color: #c88400
+}
+
+.navlinks a,
+.button,
+.feature {
+    transition: color .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease
 }
 
 .button {
     border: 0;
     border-radius: 99px;
-    background: var(--red);
-    color: var(--navy);
+    background: linear-gradient(135deg, #f7b51a, var(--red));
+    color: #fff;
     padding: 12px 21px;
     font: 700 14px 'DM Sans';
     cursor: pointer;
-    box-shadow: 0 8px 17px #eabf3738
+    box-shadow: 0 8px 17px rgb(221 195 80 / .28)
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 22px rgb(221 195 80 / .34)
+}
+
+.button:focus-visible,
+.navlinks a:focus-visible,
+.link-arrow:focus-visible {
+    outline: 3px solid rgb(50 130 211 / .3);
+    outline-offset: 3px
 }
 
 .button.alt {
-    background: #fff;
+    background: linear-gradient(135deg, #fff, #f4f9ff);
     color: var(--navy);
     box-shadow: none;
-    border: 1px solid #dceaf2
+    border: 1px solid #cfe2f7
 }
 
 .hero {
@@ -92,7 +116,7 @@ a {
     overflow: hidden;
     position: relative;
     padding: 86px max(5vw, 30px) 60px;
-    background: linear-gradient(113deg, #eaf8ff 0%, #f9fdff 58%, #fffbe5 100%)
+    background: linear-gradient(113deg, #e4f2ff 0%, #f8fbff 52%, #fff8e4 100%)
 }
 
 .hero:before {
@@ -100,7 +124,7 @@ a {
     position: absolute;
     width: 710px;
     height: 710px;
-    border: 1px dashed #9bd6ee;
+    border: 1px dashed #91c5f0;
     border-radius: 50%;
     right: -180px;
     top: -285px
@@ -112,7 +136,7 @@ a {
     width: 230px;
     height: 230px;
     border-radius: 50%;
-    background: #fff1a8;
+    background: radial-gradient(circle at 35% 35%, #fff9dd, var(--yellow));
     right: 7%;
     bottom: -90px
 }
@@ -132,7 +156,8 @@ a {
     font: 800 clamp(43px, 5vw, 72px)/.98 Outfit;
     margin: 20px 0;
     color: var(--navy);
-    letter-spacing: -.045em
+    letter-spacing: -.045em;
+    text-wrap: balance
 }
 
 .hero h1 em {
@@ -143,9 +168,10 @@ a {
 .hero p {
     font-size: 18px;
     line-height: 1.62;
-    color: #58748c;
+    color: #53728f;
     max-width: 530px;
-    margin: 0 0 28px
+    margin: 0 0 28px;
+    text-wrap: pretty
 }
 
 .hero-actions {
@@ -177,7 +203,7 @@ a {
     width: 380px;
     height: 380px;
     border-radius: 50%;
-    background: #bceafa;
+    background: radial-gradient(circle at 35% 30%, #d9efff, #afd5f5);
     left: 50%;
     top: 18px;
     transform: translateX(-50%)
@@ -187,20 +213,20 @@ a {
     content: "";
     position: absolute;
     inset: 19px;
-    border: 1px dashed #fff;
+    border: 1px dashed rgb(255 255 255 / .8);
     border-radius: 50%
 }
 
 .road {
     position: absolute;
-    background: #fff;
+    background: linear-gradient(90deg, #fff, #f7fbff);
     border-radius: 999px;
     width: 520px;
     height: 61px;
     top: 174px;
     left: -35px;
     transform: rotate(-21deg);
-    box-shadow: 0 7px 20px #4b9abd17
+    box-shadow: 0 7px 20px rgb(46 123 199 / .12)
 }
 
 .road:after {
@@ -208,20 +234,20 @@ a {
     position: absolute;
     inset: 29px 18px auto;
     height: 2px;
-    background: repeating-linear-gradient(90deg, #a8ddf5 0 14px, transparent 14px 25px)
+    background: repeating-linear-gradient(90deg, #8fc4ed 0 14px, transparent 14px 25px)
 }
 
 .phone {
     position: absolute;
     width: 230px;
     height: 442px;
-    background: #fff;
-    border: 8px solid var(--navy);
+    background: linear-gradient(180deg, #fff, #f9fcff);
+    border: 8px solid var(--phone-navy);
     border-radius: 34px;
     left: 50%;
     transform: translateX(-50%);
     top: 0;
-    box-shadow: 0 24px 36px #0e497333;
+    box-shadow: 0 26px 42px rgb(13 49 93 / .26), inset 0 0 0 1px rgb(255 255 255 / .14);
     overflow: hidden
 }
 
@@ -229,7 +255,7 @@ a {
     width: 93px;
     height: 20px;
     border-radius: 0 0 13px 13px;
-    background: var(--navy);
+    background: var(--phone-navy);
     margin: auto
 }
 
@@ -245,12 +271,12 @@ a {
 
 .tiny {
     font-size: 9px;
-    color: #6c8799;
+    color: #69829a;
     margin-top: 3px
 }
 
 .service-card {
-    background: #e9f8ff;
+    background: linear-gradient(135deg, #eff8ff, #e1f0ff);
     border-radius: 14px;
     padding: 13px;
     margin-top: 18px
@@ -262,52 +288,48 @@ a {
 
 .service-card div {
     font-size: 9px;
-    color: #5f8297;
+    color: #5c7994;
     margin-top: 5px
 }
 
 .map {
-    height: 170px;
-    background: #eef8f4;
+    aspect-ratio: 18 / 17;
+    background-color: #edf6ff;
     border-radius: 14px;
     margin-top: 12px;
     position: relative;
     overflow: hidden;
-    background-image: linear-gradient(30deg, transparent 46%, #c8e7de 47% 50%, transparent 51%), linear-gradient(110deg, transparent 35%, #d1e9f1 36% 39%, transparent 40%)
+    background-image: linear-gradient(30deg, transparent 46%, #d2e6f8 47% 50%, transparent 51%), linear-gradient(110deg, transparent 35%, #c2ddf3 36% 39%, transparent 40%), linear-gradient(135deg, #f1f8ff, #e8f4ff)
 }
 
-.route {
+.route-map {
     position: absolute;
-    width: 110px;
-    height: 80px;
-    left: 49px;
-    top: 36px;
-    border-left: 3px dotted var(--red);
-    border-bottom: 3px dotted var(--red);
-    border-radius: 0 0 0 18px;
-    transform: rotate(-19deg)
+    inset: 0;
+    width: 100%;
+    height: 100%
 }
 
-.pin {
-    position: absolute;
-    font-size: 20px
+.route-line {
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 1 6
 }
 
-.pin.one {
-    left: 37px;
-    top: 26px
-}
-
-.pin.two {
-    right: 35px;
-    bottom: 30px
+.route-marker {
+    fill: none;
+    stroke: var(--navy);
+    stroke-width: 2.1;
+    stroke-linecap: round;
+    stroke-linejoin: round
 }
 
 .match {
-    background: #fff;
+    background: linear-gradient(135deg, #fff, #f7fbff);
     border-radius: 13px;
     padding: 11px;
-    box-shadow: 0 7px 16px #397b8b20;
+    box-shadow: 0 7px 16px rgb(23 95 172 / .13);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -319,10 +341,12 @@ a {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #ffd5c8;
+    background: linear-gradient(135deg, #fff5d6, #ffe0a0);
     display: grid;
     place-items: center;
-    font-size: 15px
+    color: var(--navy);
+    font: 700 9px Outfit;
+    letter-spacing: -.04em
 }
 
 .match strong {
@@ -332,7 +356,7 @@ a {
 .match small {
     display: block;
     font-size: 8px;
-    color: #66849a;
+    color: #63809b;
     margin-top: 2px
 }
 
@@ -340,18 +364,19 @@ a {
     margin-left: auto;
     font-size: 8px;
     font-weight: bold;
-    color: #42a071;
-    background: #e5f8ed;
+    color: #2874bd;
+    background: linear-gradient(135deg, #edf7ff, #dfedfb);
     padding: 4px 6px;
     border-radius: 99px
 }
 
 .float-card {
     position: absolute;
-    background: #fff;
+    background: linear-gradient(135deg, #fff, #f8fcff);
+    border: 1px solid rgb(207 226 247 / .8);
     border-radius: 13px;
     padding: 12px 15px;
-    box-shadow: 0 15px 30px #1b52712b;
+    box-shadow: 0 15px 30px rgb(18 84 150 / .16);
     font-size: 11px;
     z-index: 2
 }
@@ -363,7 +388,7 @@ a {
 }
 
 .float-card small {
-    color: #7890a0;
+    color: #71899f;
     font-size: 9px
 }
 
@@ -379,9 +404,29 @@ a {
 
 .float-icon {
     color: var(--red);
-    font-size: 17px;
     float: left;
+    width: 17px;
+    height: 17px;
     margin-right: 7px
+}
+
+.float-icon svg,
+.top-icon svg,
+.trust-icon svg,
+.ficon svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+.top-icon {
+    width: 14px;
+    height: 14px;
+    color: var(--red)
 }
 
 .trust {
@@ -389,8 +434,9 @@ a {
     margin: -20px auto 0;
     position: relative;
     z-index: 3;
-    background: #fff;
-    box-shadow: 0 12px 36px #1e627315;
+    background: linear-gradient(110deg, #fff, #f7fbff);
+    border: 1px solid rgb(207 226 247 / .72);
+    box-shadow: 0 12px 36px rgb(25 103 180 / .12);
     border-radius: 16px;
     padding: 21px 30px;
     display: flex;
@@ -410,11 +456,11 @@ a {
     width: 33px;
     height: 33px;
     border-radius: 50%;
-    background: #e4f6ff;
-    color: #449fc9;
+    background: linear-gradient(135deg, #edf7ff, #dceeff);
+    color: #287ac5;
     display: grid;
     place-items: center;
-    font-size: 16px
+    padding: 8px
 }
 
 section {
@@ -449,7 +495,8 @@ section {
 }
 
 .features {
-    background: #fff
+    background: linear-gradient(180deg, #fff, #f8fcff);
+    padding-bottom: 108px
 }
 
 .features-head {
@@ -467,34 +514,38 @@ section {
 
 .feature {
     padding: 27px 23px;
-    border: 1px solid #e4eef3;
+    border: 1px solid #dceaf7;
     border-radius: 18px;
-    transition: .2s;
-    background: #fff
+    background: linear-gradient(145deg, #fff, #f6fbff);
+    box-shadow: 0 8px 20px rgb(31 104 174 / .045)
 }
 
 .feature:hover {
     transform: translateY(-5px);
-    box-shadow: 0 16px 35px #337d9e14
+    border-color: #bfdcf6;
+    box-shadow: 0 18px 38px rgb(28 106 181 / .13)
 }
 
 .feature .ficon {
     width: 45px;
     height: 45px;
     border-radius: 13px;
-    background: #e6f7ff;
+    background: linear-gradient(135deg, #eff8ff, #dceeff);
     display: grid;
     place-items: center;
-    font-size: 21px;
+    color: #287ac5;
+    padding: 11px;
     margin-bottom: 19px
 }
 
 .feature:nth-child(2) .ficon {
-    background: #fff1e9
+    background: linear-gradient(135deg, #fff9e9, #fff0c5);
+    color: #cf8900
 }
 
 .feature:nth-child(3) .ficon {
-    background: #fff8d9
+    background: linear-gradient(135deg, #fffdf3, #fff3cd);
+    color: #c88400
 }
 
 .feature h3 {
@@ -510,18 +561,20 @@ section {
 }
 
 .faith {
-    background: #edfaff;
+    background: radial-gradient(circle at 90% 0%, #fff9e2 0, transparent 27%), linear-gradient(135deg, #f1f8ff, #e2f1ff);
     position: relative;
     overflow: hidden
 }
 
 .faith:after {
-    content: '♥';
+    content: '';
     position: absolute;
-    color: #fff1a8;
-    font: 800 260px Outfit;
+    width: 250px;
+    height: 250px;
+    border: 40px solid #ffe7a0;
+    border-radius: 50%;
     right: 5%;
-    top: -55px
+    top: -105px
 }
 
 .faith-grid {
@@ -543,7 +596,8 @@ section {
 
 .value {
     padding: 15px;
-    background: #fffef8;
+    background: linear-gradient(135deg, #fffefb, #fff9eb);
+    border: 1px solid rgb(230 220 181 / .6);
     border-radius: 13px;
     display: flex;
     gap: 12px;
@@ -552,7 +606,7 @@ section {
 
 .letter {
     font: 800 25px Outfit;
-    color: #c79b17
+    color: #c88400
 }
 
 .value strong {
@@ -571,7 +625,8 @@ section {
 .cta {
     max-width: 1030px;
     margin: 0 auto 80px;
-    background: var(--navy);
+    background: linear-gradient(120deg, #0d315d, #1b6ab5);
+    box-shadow: 0 22px 48px rgb(13 49 93 / .18);
     border-radius: 25px;
     padding: 54px 7%;
     position: relative;
@@ -580,9 +635,11 @@ section {
 }
 
 .cta:after {
-    content: '♥';
-    font: 800 270px Outfit;
-    color: #244e73;
+    content: '';
+    width: 240px;
+    height: 240px;
+    border: 38px solid rgb(145 199 243 / .22);
+    border-radius: 50%;
     position: absolute;
     right: 1%;
     top: -93px
@@ -597,7 +654,7 @@ section {
 
 .cta p {
     max-width: 500px;
-    color: #c8dce9;
+    color: #d9ebfb;
     line-height: 1.55;
     position: relative;
     z-index: 1
@@ -610,14 +667,23 @@ section {
 }
 
 .footer {
-    border-top: 1px solid #e7eff4;
+    border-top: 1px solid #dceafb;
     padding: 35px max(5vw, 30px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #6e879a;
+    color: #6b849a;
     font-size: 12px;
-    background: #fffef8
+    background: linear-gradient(100deg, #fffdf7, #f6fbff)
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important
+    }
 }
 
 .footer .brand {
