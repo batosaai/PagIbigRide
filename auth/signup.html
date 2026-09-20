@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create your account — PagibigRide</title>
+    <link rel="icon" type="image/png" href="../favicon_draft.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body class="auth-page signup-page">
+    <main class="auth-layout">
+        <section class="auth-welcome" aria-label="Join the PagibigRide community">
+            <a class="brand auth-brand" href="../index.html" aria-label="Back to PagibigRide home">
+                <img class="brand-logo" src="../favicon_draft.png" alt="PagibigRide logo">
+            </a>
+            <div class="welcome-copy">
+                <p class="eyebrow">JOIN THE COMMUNITY</p>
+                <h1>There is always room for <em>one more.</em></h1>
+                <p>Create your account to make worship and fellowship more accessible for everyone.</p>
+            </div>
+            <div class="welcome-route" aria-hidden="true">
+                <span class="route-pin start"></span><span class="route-line"></span><span class="route-pin end"></span>
+            </div>
+            <p class="welcome-note">Ride together. Arrive in love.</p>
+        </section>
+
+        <section class="auth-panel signup-panel">
+            <a class="back-link" href="../index.html">← Back to home</a>
+            <div class="form-wrap">
+                <div class="form-heading">
+                    <p class="eyebrow">CREATE YOUR ACCOUNT</p>
+                    <h2>Join PagibigRide</h2>
+                    <p>Tell us a little about yourself to get started.</p>
+                </div>
+                <form id="signup-form" novalidate>
+                    <div class="field">
+                        <label for="full-name">Full name</label>
+                        <input id="full-name" name="fullName" type="text" autocomplete="name"
+                            placeholder="Your full name" required>
+                    </div>
+                    <div class="field">
+                        <label for="signup-email">Email address</label>
+                        <input id="signup-email" name="email" type="email" autocomplete="email"
+                            placeholder="you@example.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="signup-password">Password</label>
+                        <div class="password-field">
+                            <input id="signup-password" name="password" type="password" autocomplete="new-password"
+                                placeholder="At least 8 characters" minlength="8" required>
+                            <button class="password-toggle" type="button" aria-label="Show password"
+                                aria-pressed="false">Show</button>
+                        </div>
+                    </div>
+                    <div class="field-grid">
+                        <div class="field">
+                            <label for="church-id">Church ID</label>
+                            <input id="church-id" name="churchId" type="text" placeholder="e.g. 123456" required>
+                        </div>
+                        <div class="field">
+                            <label for="municipality">Municipality</label>
+                            <input id="municipality" name="municipality" type="text" autocomplete="address-level2"
+                                placeholder="Your municipality" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="locale">Locale</label>
+                        <input id="locale" name="locale" type="text" placeholder="e.g. Quezon City Locale" required>
+                    </div>
+                    <p class="form-message" id="signup-message" role="alert" aria-live="polite"></p>
+                    <button class="button auth-submit" type="submit">Create my account</button>
+                </form>
+                <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
+            </div>
+        </section>
+    </main>
+    <script src="auth.js"></script>
+</body>
+
+</html>
