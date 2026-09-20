@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in — PagibigRide</title>
+    <link rel="icon" type="image/png" href="../favicon_draft.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body class="auth-page">
+    <main class="auth-layout">
+        <section class="auth-welcome" aria-label="Welcome to PagibigRide">
+            <a class="brand auth-brand" href="../index.html" aria-label="Back to PagibigRide home">
+                <img class="brand-logo" src="../favicon_draft.png" alt="PagibigRide logo">
+            </a>
+            <div class="welcome-copy">
+                <p class="eyebrow">WELCOME BACK</p>
+                <h1>Every ride begins with <em>care.</em></h1>
+                <p>Sign in to coordinate a ride, offer a seat, and stay connected to your community.</p>
+            </div>
+            <div class="welcome-route" aria-hidden="true">
+                <span class="route-pin start"></span><span class="route-line"></span><span class="route-pin end"></span>
+            </div>
+            <p class="welcome-note">A caring community, moving together.</p>
+        </section>
+
+        <section class="auth-panel">
+            <a class="back-link" href="../index.html">← Back to home</a>
+            <div class="form-wrap">
+                <div class="form-heading">
+                    <p class="eyebrow">MEMBER ACCESS</p>
+                    <h2>Sign in</h2>
+                    <p>Welcome back. Please enter your details.</p>
+                </div>
+                <form id="login-form" novalidate>
+                    <div class="field">
+                        <label for="login-email">Email address</label>
+                        <input id="login-email" name="email" type="email" autocomplete="email"
+                            placeholder="you@example.com" required>
+                    </div>
+                    <div class="field">
+                        <div class="label-row"><label for="login-password">Password</label></div>
+                        <div class="password-field">
+                            <input id="login-password" name="password" type="password" autocomplete="current-password"
+                                placeholder="Enter your password" required>
+                            <button class="password-toggle" type="button" aria-label="Show password"
+                                aria-pressed="false">Show</button>
+                        </div>
+                    </div>
+                    <p class="form-message" id="login-message" role="alert" aria-live="polite"></p>
+                    <button class="button auth-submit" type="submit">Sign in to PagibigRide</button>
+                </form>
+                <p class="auth-switch">Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </div>
+        </section>
+    </main>
+    <script src="auth.js"></script>
+</body>
+
+</html>
