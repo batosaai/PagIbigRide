@@ -2061,3 +2061,185 @@ section {
         display: block;
     }
 }
+.ride-modal-actions {
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0 0 20px;
+    border: 0;
+}
+
+@media (max-width: 420px) {
+    .ride-modal-actions {
+        justify-content: stretch;
+    }
+}
+.ride-modal-heading {
+    margin-bottom: 8px;
+}
+
+.ride-modal-actions {
+    margin-bottom: 8px;
+}
+
+.ride-modal-request {
+    padding: 10px 18px;
+}
+.ride-modal-route {
+    padding: 0;
+}
+
+.ride-modal-actions {
+    margin-bottom: 0;
+}
+
+.ride-map {
+    height: 270px;
+}
+
+@media (max-width: 700px) {
+    .ride-map {
+        height: 220px;
+    }
+}
+
+@media (max-width: 420px) {
+    .ride-map {
+        height: 190px;
+    }
+}
+.ride-modal-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.ride-modal-heading > div:first-child {
+    min-width: 0;
+}
+
+.ride-modal-heading .ride-modal-request {
+    justify-self: end;
+    min-height: 44px;
+    margin: 0;
+    padding: 10px 18px;
+    white-space: nowrap;
+}
+
+.ride-modal-close {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+}
+
+@media (max-width: 760px) {
+    .ride-modal {
+        max-height: calc(100vh - 24px);
+        max-height: calc(100dvh - 24px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    .ride-modal-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .ride-modal-heading {
+        grid-template-columns: minmax(0, 1fr) 40px;
+        gap: 8px 12px;
+        margin-bottom: 14px;
+    }
+
+    .ride-modal-heading > div:first-child {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .ride-modal-heading .ride-modal-request {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: start;
+    }
+
+    .ride-modal-heading .ride-modal-close {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .driver-chat {
+        min-height: 280px;
+    }
+
+    .chat-messages {
+        min-height: 150px;
+        max-height: 240px;
+    }
+}
+
+@media (max-width: 420px) {
+    .ride-modal {
+        width: calc(100% - 16px);
+        max-height: calc(100vh - 16px);
+        max-height: calc(100dvh - 16px);
+        padding: 14px;
+        border-radius: 18px;
+    }
+
+    .ride-modal-heading {
+        gap: 8px 10px;
+    }
+
+    .ride-modal-heading h2 {
+        font-size: clamp(20px, 6vw, 22px);
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .ride-modal-heading .ride-modal-request {
+        width: 100%;
+        grid-column: 1 / -1;
+        justify-self: stretch;
+    }
+
+    .ride-detail-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+    }
+
+    .ride-detail-item {
+        min-height: 64px;
+        padding: 9px;
+    }
+
+    .ride-detail-item:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .ride-map-heading {
+        align-items: center;
+        flex-direction: row;
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .ride-map-heading a {
+        text-align: right;
+        font-size: 11px;
+    }
+
+    .ride-map {
+        height: 190px;
+    }
+
+    .driver-chat {
+        min-height: 250px;
+        padding: 14px;
+    }
+
+    .chat-messages {
+        min-height: 130px;
+        max-height: 190px;
+    }
+}
