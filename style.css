@@ -1284,3 +1284,780 @@ section {
         padding: 24px 16px;
     }
 }
+.driver-chat {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #dceaf7;
+}
+
+.driver-chat-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.driver-chat-heading h3 {
+    margin: 0;
+    color: var(--navy);
+    font: 700 17px/1.25 Outfit, sans-serif;
+}
+
+.driver-chat-heading p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 170px;
+    min-height: 88px;
+    overflow-y: auto;
+    padding: 12px;
+    border: 1px solid #dceaf7;
+    border-radius: 14px;
+    background: #f7fbff;
+}
+
+.chat-bubble {
+    max-width: 86%;
+    margin: 0;
+    padding: 9px 11px;
+    border-radius: 13px;
+    color: var(--ink);
+    background: #e8f2ff;
+    font-size: 12px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.chat-bubble.rider {
+    align-self: flex-end;
+    color: #fff;
+    background: var(--navy);
+}
+
+.chat-compose {
+    display: flex;
+    gap: 8px;
+    margin-top: 9px;
+}
+
+.chat-compose input {
+    min-width: 0;
+    flex: 1;
+    padding: 11px 13px;
+    border: 1px solid #d3e2ef;
+    border-radius: 12px;
+    color: var(--ink);
+    background: #fff;
+    font: 13px 'DM Sans', sans-serif;
+}
+
+.chat-compose input:focus-visible {
+    outline: 3px solid rgb(50 130 211 / .22);
+    border-color: #8dbce8;
+}
+
+.chat-send {
+    padding: 10px 16px;
+    font-size: 12px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.ride-modal {
+    width: min(560px, calc(100% - 28px));
+    max-height: calc(100vh - 28px);
+    overflow-y: auto;
+}
+
+.ride-map {
+    height: 175px;
+}
+
+@media (max-width: 480px) {
+    .ride-modal {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .ride-detail-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .ride-map {
+        height: 150px;
+    }
+
+    .chat-send {
+        padding-inline: 13px;
+    }
+}
+/* Balanced ride details dialog */
+.ride-modal {
+    width: min(940px, calc(100% - 32px));
+    max-height: calc(100vh - 32px);
+    padding: 28px;
+    overflow-y: auto;
+}
+
+.ride-modal-heading {
+    margin-bottom: 22px;
+}
+
+.ride-modal-heading h2 {
+    font-size: clamp(22px, 2.4vw, 28px);
+}
+
+.ride-modal-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    align-items: stretch;
+    gap: 22px;
+}
+
+.ride-modal-route {
+    min-width: 0;
+}
+
+.ride-detail-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 0;
+}
+
+.ride-detail-item {
+    min-width: 0;
+    min-height: 68px;
+    padding: 10px;
+}
+
+.ride-detail-item strong {
+    font-size: 9px;
+    line-height: 1.3;
+}
+
+.ride-detail-item span {
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+.ride-map-heading {
+    margin-top: 20px;
+}
+
+.ride-map {
+    height: 240px;
+}
+
+.driver-chat {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 100%;
+    margin: 0;
+    padding: 18px;
+    border: 1px solid #dceaf7;
+    border-radius: 18px;
+    background: linear-gradient(150deg, #f8fbff, #eff6ff);
+}
+
+.driver-chat-heading {
+    min-height: 48px;
+}
+
+.chat-messages {
+    flex: 1;
+    min-height: 220px;
+    max-height: 340px;
+}
+
+.ride-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 18px;
+    margin-top: 20px;
+    border-top: 1px solid #dceaf7;
+}
+
+.ride-modal-request {
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .ride-modal {
+        width: min(560px, calc(100% - 24px));
+        max-height: calc(100vh - 24px);
+        padding: 20px;
+    }
+
+    .ride-modal-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .ride-detail-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .ride-map {
+        height: 200px;
+    }
+
+    .driver-chat {
+        min-height: 320px;
+    }
+
+    .chat-messages {
+        min-height: 170px;
+        max-height: 240px;
+    }
+}
+
+@media (max-width: 420px) {
+    .ride-modal {
+        padding: 16px;
+    }
+
+    .ride-detail-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ride-detail-item:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .ride-map-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .ride-map {
+        height: 180px;
+    }
+}
+.driver-chat-locked {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 220px;
+    padding: 24px;
+    border: 1px solid #dceaf7;
+    border-radius: 14px;
+    background: #f7fbff;
+    text-align: center;
+}
+
+.driver-chat-locked[hidden],
+.driver-chat-content[hidden] {
+    display: none;
+}
+
+.driver-chat-locked p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.chat-login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-link {
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.footer-link:hover {
+    color: #c88400;
+}
+
+.about-main {
+    width: min(1040px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: clamp(48px, 8vw, 92px) 0 80px;
+}
+
+.about-intro {
+    max-width: 720px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.about-intro .label,
+.about-purpose .label {
+    margin: 0 0 13px;
+}
+
+.about-intro h1 {
+    margin: 0;
+    color: var(--navy);
+    font: 700 clamp(38px, 6vw, 62px)/1.05 Outfit, sans-serif;
+    letter-spacing: -.04em;
+}
+
+.about-intro h1 em {
+    color: #d69700;
+    font-style: normal;
+}
+
+.about-lede {
+    max-width: 620px;
+    margin: 20px auto 25px;
+    color: var(--muted);
+    font-size: clamp(15px, 2vw, 18px);
+    line-height: 1.7;
+}
+
+.about-purpose {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: clamp(28px, 6vw, 72px);
+    align-items: center;
+    padding: clamp(24px, 5vw, 50px);
+    border: 1px solid #dceaf7;
+    border-radius: 24px;
+    background: linear-gradient(140deg, #fff, #f3f9ff);
+    box-shadow: 0 14px 40px rgb(31 104 174 / .07);
+}
+
+.about-purpose-copy h2 {
+    margin: 0 0 14px;
+    color: var(--navy);
+    font: 700 clamp(27px, 3.5vw, 38px)/1.12 Outfit, sans-serif;
+}
+
+.about-purpose-copy > p:last-child {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.about-principles {
+    display: grid;
+    gap: 12px;
+}
+
+.about-principle {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 17px;
+    border: 1px solid #e1edf8;
+    border-radius: 16px;
+    background: rgb(255 255 255 / .82);
+}
+
+.about-principle-mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    border-radius: 12px;
+    color: #8a6200;
+    background: linear-gradient(135deg, #fff3c9, #ffe8a0);
+    font: 700 12px Outfit, sans-serif;
+}
+
+.about-principle h3 {
+    margin: 0 0 4px;
+    color: var(--ink);
+    font: 700 16px Outfit, sans-serif;
+}
+
+.about-principle p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+@media (max-width: 700px) {
+    .about-main {
+        width: min(560px, calc(100% - 28px));
+        padding: 52px 0;
+    }
+
+    .about-intro {
+        margin-bottom: 42px;
+    }
+
+    .about-purpose {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px;
+    }
+
+    .about-page .footer {
+        justify-content: center;
+        text-align: center;
+    }
+}
+.about-nav-link {
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+/* Subtle page motion */
+@keyframes fade-down {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rise-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dialog-in {
+    from { opacity: 0; transform: translateY(12px) scale(.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes backdrop-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.nav {
+    animation: fade-down .38s ease-out both;
+}
+
+.rides-heading,
+.about-intro {
+    animation: rise-in .48s .06s ease-out both;
+}
+
+.ride-card {
+    animation: rise-in .42s ease-out both;
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.ride-card:nth-of-type(1) { animation-delay: .04s; }
+.ride-card:nth-of-type(2) { animation-delay: .08s; }
+.ride-card:nth-of-type(3) { animation-delay: .12s; }
+.ride-card:nth-of-type(4) { animation-delay: .16s; }
+.ride-card:nth-of-type(5) { animation-delay: .20s; }
+.ride-card:nth-of-type(6) { animation-delay: .24s; }
+.ride-card:nth-of-type(7) { animation-delay: .28s; }
+.ride-card:nth-of-type(8) { animation-delay: .32s; }
+
+.ride-card:hover {
+    transform: translateY(-3px);
+    border-color: #bfd8ef;
+    box-shadow: 0 14px 28px rgb(31 104 174 / .12);
+}
+
+.about-purpose {
+    animation: rise-in .52s .18s ease-out both;
+}
+
+.about-principle {
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.about-principle:hover {
+    transform: translateX(3px);
+    border-color: #cfe2f3;
+    box-shadow: 0 7px 18px rgb(31 104 174 / .07);
+}
+
+.navlinks a,
+.footer-link,
+.about-nav-link {
+    transition: color .18s ease, transform .18s ease;
+}
+
+.navlinks a:hover,
+.footer-link:hover,
+.about-nav-link:hover {
+    transform: translateY(-1px);
+}
+
+.brand-logo {
+    transition: transform .25s ease;
+}
+
+.brand:hover .brand-logo {
+    transform: rotate(-5deg) scale(1.04);
+}
+
+.ride-modal[open] {
+    animation: dialog-in .24s cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.ride-modal[open]::backdrop {
+    animation: backdrop-in .2s ease-out both;
+}
+
+.chat-bubble {
+    animation: rise-in .2s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+/* Phone navigation and touch-friendly layouts */
+.mobile-nav {
+    display: none;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.mobile-nav summary {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid #d3e4f2;
+    border-radius: 14px;
+    background: #fff;
+    cursor: pointer;
+    list-style: none;
+}
+
+.mobile-nav summary::-webkit-details-marker {
+    display: none;
+}
+
+.mobile-nav summary span {
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--navy);
+    transition: transform .18s ease, opacity .18s ease;
+}
+
+.mobile-nav[open] summary span:first-child {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-nav[open] summary span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-nav[open] summary span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu-panel {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 10px);
+    right: 0;
+    display: grid;
+    width: min(260px, calc(100vw - 24px));
+    gap: 4px;
+    padding: 8px;
+    border: 1px solid #dceaf7;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #fff, #f6fbff);
+    box-shadow: 0 16px 36px rgb(13 49 93 / .18);
+}
+
+.mobile-menu-panel a {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    padding: 10px 13px;
+    border-radius: 11px;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.mobile-menu-panel a:hover {
+    background: #edf6ff;
+}
+
+.mobile-menu-panel .mobile-menu-join {
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(135deg, #f7b51a, var(--red));
+}
+
+@media (max-width: 760px) {
+    .mobile-nav {
+        display: block;
+    }
+
+    .nav {
+        padding-inline: 14px;
+        gap: 10px;
+    }
+
+    .nav .brand {
+        gap: 6px;
+    }
+
+    .nav .brand-logo {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+    }
+
+    .nav .brand-wordmark {
+        width: min(150px, calc(100vw - 120px));
+        max-height: 34px;
+        flex-basis: 150px;
+    }
+
+    .ride-card {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .ride-action.ride-details-button {
+        min-height: 44px;
+        padding: 10px 18px;
+    }
+
+    .ride-modal-heading {
+        gap: 12px;
+        margin-bottom: 17px;
+    }
+
+    .ride-modal-close {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+    }
+
+    .ride-detail-item {
+        padding: 10px;
+    }
+
+    .chat-compose input {
+        min-height: 46px;
+        font-size: 16px;
+    }
+
+    .chat-send,
+    .ride-modal-request {
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 420px) {
+    .nav {
+        min-height: 64px;
+        padding-inline: 10px;
+    }
+
+    .nav .brand-logo {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+    .nav .brand-wordmark {
+        width: min(132px, calc(100vw - 100px));
+        max-height: 30px;
+        flex-basis: 132px;
+    }
+
+    .rides {
+        padding-top: 24px;
+    }
+
+    .ride-title-row h3 {
+        line-height: 1.25;
+    }
+
+    .ride-destination,
+    .ride-driver {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .ride-modal {
+        width: calc(100% - 16px);
+        max-height: calc(100dvh - 16px);
+        padding: 14px;
+        border-radius: 18px;
+    }
+
+    .ride-modal-heading h2 {
+        font-size: 22px;
+        overflow-wrap: anywhere;
+    }
+
+    .ride-detail-item {
+        min-height: 64px;
+    }
+
+    .ride-map {
+        height: 170px;
+    }
+
+    .driver-chat {
+        min-height: 280px;
+        padding: 14px;
+    }
+
+    .chat-messages {
+        min-height: 150px;
+    }
+
+    .ride-modal-actions {
+        justify-content: stretch;
+    }
+
+    .ride-modal-request {
+        width: 100%;
+    }
+
+    .about-purpose {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .footer .brand-wordmark {
+        width: 145px;
+        height: 30px;
+    }
+}
+@media (max-width: 760px) {
+    .chat-login {
+        min-height: 44px;
+    }
+}
+@media (max-width: 800px) {
+    .mobile-nav {
+        display: block;
+    }
+}
