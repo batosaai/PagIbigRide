@@ -1098,3 +1098,189 @@ section {
         margin-left: 68px
     }
 }
+
+/* Responsive brand and ride list layout */
+.nav {
+    height: auto;
+    min-height: 78px;
+    gap: 16px;
+    padding: 10px clamp(16px, 5vw, 64px);
+}
+
+.nav .brand {
+    min-width: 0;
+    gap: 9px;
+}
+
+.nav .brand-logo {
+    width: 56px;
+    height: 56px;
+    flex: 0 0 56px;
+}
+
+.nav .brand-wordmark {
+    display: block;
+    width: min(180px, calc(100vw - 150px));
+    height: auto;
+    max-height: 40px;
+    flex: 0 1 180px;
+    object-fit: contain;
+}
+
+.rides {
+    padding: clamp(24px, 4vw, 40px) clamp(16px, 4vw, 48px) 32px;
+}
+
+.rides-wrap {
+    width: min(100%, 1040px);
+}
+
+.ride-card {
+    display: grid;
+    grid-template-columns: 70px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+    padding: 18px 21px;
+    border: 1px solid #dceaf7;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #fff, #f6fbff);
+    box-shadow: 0 8px 20px rgb(31 104 174 / .07);
+}
+
+.ride-date {
+    width: 70px;
+    min-width: 70px;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+.ride-info {
+    grid-column: 2;
+    min-width: 0;
+}
+
+.ride-title-row h3 {
+    overflow-wrap: anywhere;
+}
+
+.ride-action,
+.ride-action.ride-details-button {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    justify-self: end;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.footer {
+    flex-wrap: wrap;
+    gap: 14px 24px;
+}
+
+@media (max-width: 760px) {
+    .nav {
+        min-height: 68px;
+        padding-inline: 18px;
+    }
+
+    .nav .brand-logo {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+    }
+
+    .nav .brand-wordmark {
+        width: min(160px, calc(100vw - 112px));
+        max-height: 36px;
+        flex-basis: 160px;
+    }
+
+    .navlinks {
+        display: none;
+    }
+
+    .rides-heading {
+        display: block;
+    }
+
+    .rides-heading .sub {
+        margin-top: 6px;
+    }
+
+    .ride-card {
+        grid-template-columns: 60px minmax(0, 1fr);
+        gap: 10px 14px;
+        padding: 15px;
+    }
+
+    .ride-date {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        width: 60px;
+        min-width: 60px;
+        height: 66px;
+    }
+
+    .ride-info {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .ride-action,
+    .ride-action.ride-details-button {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: start;
+        margin: 0;
+    }
+}
+
+@media (max-width: 440px) {
+    .rides {
+        padding-inline: 12px;
+    }
+
+    .rides-wrap {
+        padding-inline: 0;
+    }
+
+    .ride-card {
+        grid-template-columns: 52px minmax(0, 1fr);
+        gap: 10px;
+        padding: 13px 12px;
+    }
+
+    .ride-date {
+        width: 52px;
+        min-width: 52px;
+        height: 62px;
+    }
+
+    .ride-date strong {
+        font-size: 18px;
+    }
+
+    .ride-title-row {
+        gap: 6px;
+    }
+
+    .ride-title-row h3 {
+        font-size: 15px;
+    }
+
+    .ride-status {
+        padding: 4px 7px;
+        font-size: 10px;
+    }
+
+    .ride-driver,
+    .ride-destination {
+        overflow-wrap: anywhere;
+    }
+
+    .footer {
+        padding: 24px 16px;
+    }
+}
