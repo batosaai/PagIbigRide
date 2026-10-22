@@ -1153,12 +1153,18 @@ section {
     width: 70px;
     min-width: 70px;
     grid-column: 1;
-    grid-row: 1 / span 2;
+    grid-row: 1;
 }
 
 .ride-info {
     grid-column: 2;
+    grid-row: 1;
     min-width: 0;
+    text-align: left;
+}
+
+.ride-title-row {
+    justify-content: flex-start;
 }
 
 .ride-title-row h3 {
@@ -1168,7 +1174,7 @@ section {
 .ride-action,
 .ride-action.ride-details-button {
     grid-column: 3;
-    grid-row: 1 / span 2;
+    grid-row: 1;
     justify-self: end;
     margin: 0;
     white-space: nowrap;
@@ -1226,13 +1232,18 @@ section {
     .ride-info {
         grid-column: 2;
         grid-row: 1;
+        text-align: center;
+    }
+
+    .ride-title-row {
+        justify-content: center;
     }
 
     .ride-action,
     .ride-action.ride-details-button {
         grid-column: 2;
         grid-row: 2;
-        justify-self: start;
+        justify-self: center;
         margin: 0;
     }
 }
@@ -2241,5 +2252,118 @@ section {
     .chat-messages {
         min-height: 130px;
         max-height: 190px;
+    }
+}
+
+
+/* Drivers available for a selected ride batch */
+.drivers-modal {
+    width: min(560px, calc(100% - 32px));
+    max-width: none;
+    max-height: calc(100dvh - 32px);
+    padding: 26px;
+    overflow-y: auto;
+    border: 1px solid #dceaf7;
+    border-radius: 22px;
+    color: var(--ink);
+    background: linear-gradient(150deg, #fff, #f4f9ff);
+    box-shadow: 0 24px 70px rgb(23 64 108 / .24);
+}
+
+.drivers-modal::backdrop {
+    background: rgb(21 47 74 / .38);
+    backdrop-filter: blur(5px);
+}
+
+.drivers-modal-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.drivers-modal-heading h2 {
+    margin: 3px 0 0;
+    color: var(--navy);
+    font: 700 clamp(22px, 4vw, 28px)/1.15 Outfit, sans-serif;
+}
+
+.drivers-modal-heading p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.available-driver-list {
+    display: grid;
+    gap: 10px;
+}
+
+.available-driver-card {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #dceaf7;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.available-driver-card .driver-avatar {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    border: 1px solid #d5e8fb;
+    border-radius: 50%;
+    color: var(--navy);
+    background: linear-gradient(135deg, #edf7ff, #dceeff);
+    font: 700 16px Outfit, sans-serif;
+}
+
+.available-driver-info h3 {
+    margin: 0;
+    color: var(--ink);
+    font: 700 15px Outfit, sans-serif;
+}
+
+.available-driver-info p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.available-driver-view {
+    min-height: 42px;
+    padding: 10px 16px;
+}
+
+@media (max-width: 480px) {
+    .drivers-modal {
+        width: calc(100% - 20px);
+        max-height: calc(100dvh - 20px);
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .available-driver-card {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .available-driver-card .driver-avatar {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+    }
+
+    .available-driver-view {
+        grid-column: 2;
+        justify-self: start;
     }
 }
