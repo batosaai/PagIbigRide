@@ -22,15 +22,9 @@
         </a>
         <div class="navlinks">
             <a class="about-nav-link" href="about.html">About us</a>
-            <a class="button alt" href="auth/login.html">Sign in</a>
-            <a class="button" href="auth/signup.html">Join the community</a>
+            <a class="button alt" href="auth/login.html" data-guest-only>Sign in</a>
+            <a class="button" href="auth/signup.html" data-guest-only>Join the community</a>
         </div>
-        <details class="profile-menu" id="profile-menu" hidden>
-            <summary class="profile-avatar" id="profile-avatar" aria-label="Open profile menu"></summary>
-            <div class="profile-menu-panel">
-                <button class="profile-logout" id="profile-logout" type="button">Log out</button>
-            </div>
-        </details>
         <details class="mobile-nav">
             <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
             <div class="mobile-menu-panel">
@@ -39,9 +33,39 @@
                 <a class="mobile-menu-join" href="auth/signup.html" data-guest-only>Join the community</a>
             </div>
         </details>
+        <div class="account-menu" data-account-menu hidden>
+            <button class="account-avatar" type="button" data-account-avatar aria-label="Open account menu"
+                aria-haspopup="true" aria-expanded="false" aria-controls="account-dropdown">
+                <span data-account-initial aria-hidden="true"></span>
+            </button>
+            <div class="account-dropdown" id="account-dropdown" role="menu" hidden>
+                <div class="account-dropdown-email" data-account-email></div>
+                <button class="account-logout" type="button" role="menuitem" data-account-logout>Log out</button>
+            </div>
+        </div>
     </nav>
     <main>
         <section class="rides" id="rides" aria-labelledby="rides-heading">
+            <div class="create-ride-area">
+                <div class="create-ride-callout">
+                    <span class="create-ride-icon" aria-hidden="true">+</span>
+                    <div class="label">For drivers with extra seats</div>
+                    <h2>Have an extra seat?</h2>
+                    <p>Share your service trip and offer your available seats to passengers.</p>
+                    <a class="button create-ride-trigger" href="auth/login.html" data-create-ride>Offer a ride <span
+                            aria-hidden="true">→</span></a>
+                </div>
+            </div>
+            <section class="my-ride-offers" id="my-ride-offers" aria-labelledby="my-ride-offers-title" aria-live="polite" hidden>
+                <div class="my-ride-offers-heading">
+                    <div>
+                        <div class="label">Driver dashboard</div>
+                        <h2 id="my-ride-offers-title">Your ride offers</h2>
+                    </div>
+                    <p>Offers you create appear here.</p>
+                </div>
+                <div class="my-ride-offers-list" id="my-ride-offers-list"></div>
+            </section>
             <div class="rides-wrap">
                 <div class="rides-heading">
                     <div>
@@ -365,7 +389,9 @@
                     </div>
                     <div class="ride-detail-item"><strong>Destination</strong><span id="ride-modal-destination"></span>
                     </div>
-                    <div class="ride-detail-item"><strong>Vehicle</strong><span id="ride-modal-vehicle"></span></div>
+                    <div class="ride-detail-item" id="ride-modal-vehicle-item"><strong>Type of vehicle</strong><span id="ride-modal-vehicle"></span></div>
+                    <div class="ride-detail-item"><strong>Seats available</strong><span id="ride-modal-seats"></span></div>
+                    <div class="ride-detail-item"><strong>Standard batch</strong><span id="ride-modal-schedule"></span></div>
                 </div>
                 <div class="ride-map-heading">
                     <strong>Route</strong>
@@ -399,7 +425,82 @@
             </section>
         </div>
     </dialog>
+    <dialog class="create-ride-modal" id="create-ride-modal" aria-labelledby="create-ride-title">
+        <div class="create-ride-heading">
+            <div>
+                <div class="label">Driver ride offer</div>
+                <h2 id="create-ride-title">Offer a ride</h2>
+                <p>Share your service route and the seats you have available. Passengers can find your offer in the matching batch.</p>
+            </div>
+            <button class="ride-modal-close create-ride-close" type="button" aria-label="Close create ride">×</button>
+        </div>
+        <form id="create-ride-form" class="create-ride-form">
+            <div class="create-ride-fields">
+                <div class="field"><label for="ride-title">Service</label><select id="ride-title" name="title" required>
+                        <option value="" selected disabled>Choose a standard service</option>
+                        <option>Wednesday Prayer Meeting</option>
+                        <option>Thursday Prayer Meeting</option>
+                        <option>Saturday Worship Service</option>
+                        <option>Saturday Thanksgiving</option>
+                        <option>Sunday Thanksgiving</option>
+                    </select></div>
+                <div class="field"><label for="ride-vehicle">Type of vehicle</label><select id="ride-vehicle"
+                        name="vehicle" required>
+                        <option value="" selected disabled>Choose a vehicle</option>
+                        <option>Car</option>
+                        <option>SUV</option>
+                        <option>Van</option>
+                        <option>Motorcycle</option>
+                        <option>Other</option>
+                    </select></div>
+                <div class="field"><label for="ride-batch">Standard batch</label><select id="ride-batch" name="batch"
+                        required disabled>
+                        <option value="" selected disabled>Choose a service first</option>
+                    </select></div>
+                <div class="field location-autocomplete">
+                    <label for="ride-origin">Pickup location</label>
+                    <input id="ride-origin" name="origin" type="text" placeholder="Start typing a place or address"
+                        autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false"
+                        aria-controls="pickup-location-suggestions" required>
+                    <div class="location-suggestions" id="pickup-location-suggestions" role="listbox" hidden></div>
+                    <small class="location-attribution">Suggestions by <a href="https://github.com/komoot/photon"
+                            target="_blank" rel="noopener noreferrer">Photon</a> · © <a
+                            href="https://www.openstreetmap.org/copyright" target="_blank"
+                            rel="noopener noreferrer">OpenStreetMap contributors</a></small>
+                </div>
+                <div class="field"><label for="ride-destination">Destination</label><input id="ride-destination"
+                        name="destination" type="text" value="MCGI Chapel, XQ66+66V, Apalit, Pampanga" readonly required
+                        aria-label="Fixed destination: MCGI Chapel, Apalit, Pampanga"></div>
+                <div class="field"><label for="ride-seats">Available seats</label><select id="ride-seats"
+                        name="availableSeats" required>
+                        <option value="1">1 seat available</option>
+                        <option value="2">2 seats available</option>
+                        <option value="3">3 seats available</option>
+                        <option value="4">4 seats available</option>
+                    </select></div>
+            </div>
+            <section class="create-ride-route" aria-labelledby="create-route-title">
+                <div class="ride-map-heading"><strong id="create-route-title">Route preview</strong><a
+                        id="create-ride-map-link" href="#" aria-disabled="true" target="_blank"
+                        rel="noopener noreferrer">Open in Google Maps ↗</a></div>
+                <p id="create-route-hint">Enter a pickup and destination to preview the route here or open it in Google
+                    Maps.</p>
+                <iframe class="ride-map create-ride-map" id="create-ride-map"
+                    title="Preview of your pickup and destination route" loading="eager"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </section>
+            <div class="create-ride-footer">
+                <p id="create-ride-message" role="status" aria-live="polite"></p><button class="button"
+                    type="submit">Post ride offer</button>
+            </div>
+        </form>
+    </dialog>
+    <a class="create-ride-fab" href="auth/login.html" data-create-ride aria-label="Create a ride" title="Create a ride">
+        <span aria-hidden="true">+</span>
+    </a>
     <script src="app.js"></script>
+    <script src="ride-details.js"></script>
+    <script src="ride-requests.js"></script>
 </body>
 
 </html>

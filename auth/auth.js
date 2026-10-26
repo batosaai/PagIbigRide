@@ -25,8 +25,8 @@
             return;
         }
 
-        const email = form.querySelector('input[type="email"]').value.trim();
-        sessionStorage.setItem('pagibigRideEmail', email);
+        const email = form.elements.namedItem('email').value.trim().toLowerCase();
+        sessionStorage.setItem('pagibigRideUserEmail', email);
         sessionStorage.setItem('pagibigRideSignedIn', 'true');
         window.location.href = '../index.html';
     };
