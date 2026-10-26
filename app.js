@@ -1,8 +1,21 @@
 const isSignedIn = sessionStorage.getItem('pagibigRideSignedIn') === 'true';
 
 if (isSignedIn) {
-    document.querySelector('.navlinks')?.remove();
+    const navlinks = document.querySelector('.navlinks');
+    navlinks?.querySelectorAll('a:not(.about-nav-link)').forEach((link) => link.remove());
     document.querySelectorAll('[data-guest-only]').forEach((link) => link.remove());
+
+    const profileMenu = document.querySelector('#profile-menu');
+    const profileAvatar = document.querySelector('#profile-avatar');
+    const email = sessionStorage.getItem('pagibigRideEmail') || '';
+    profileAvatar.textContent = email.trim().charAt(0).toUpperCase() || '?';
+    profileAvatar.setAttribute('aria-label', 'Open profile menu');
+    profileMenu.hidden = false;
+    document.querySelector('#profile-logout').addEventListener('click', () => {
+        sessionStorage.removeItem('pagibigRideSignedIn');
+        sessionStorage.removeItem('pagibigRideEmail');
+        window.location.href = 'index.html';
+    });
 }
 
 const rideModal = document.querySelector('#ride-modal');
