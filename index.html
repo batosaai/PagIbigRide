@@ -83,21 +83,26 @@
                         <h2 class="heading" id="rides-heading">Standard Batches</h2>
                     </div>
                     <div class="batch-filters" role="group" aria-label="Filter Standard Batches">
-                        <label class="batch-filter" for="batch-type-filter">
-                            <span>Gathering type</span>
-                            <select id="batch-type-filter">
-                                <option value="all">All gathering types</option>
-                                <option value="prayer-meeting">Prayer meetings</option>
-                                <option value="worship-service">Worship service</option>
-                                <option value="thanksgiving">Thanksgiving</option>
-                            </select>
-                        </label>
-                        <label class="batch-filter" for="batch-time-filter">
-                            <span>Batch time</span>
-                            <select id="batch-time-filter">
-                                <option value="all">Any time</option>
-                            </select>
-                        </label>
+                        <div class="batch-filter">
+                            <span id="batch-type-label">Gathering type</span>
+                            <button class="batch-filter-trigger" id="batch-type-filter" type="button"
+                                aria-labelledby="batch-type-label batch-type-value" aria-haspopup="listbox"
+                                aria-expanded="false" aria-controls="batch-type-options">
+                                <span class="batch-filter-value" id="batch-type-value">All gathering types</span>
+                            </button>
+                            <div class="batch-filter-menu" id="batch-type-options" role="listbox"
+                                aria-labelledby="batch-type-label" hidden></div>
+                        </div>
+                        <div class="batch-filter">
+                            <span id="batch-time-label">Batch time</span>
+                            <button class="batch-filter-trigger" id="batch-time-filter" type="button"
+                                aria-labelledby="batch-time-label batch-time-value" aria-haspopup="listbox"
+                                aria-expanded="false" aria-controls="batch-time-options">
+                                <span class="batch-filter-value" id="batch-time-value">Any time</span>
+                            </button>
+                            <div class="batch-filter-menu" id="batch-time-options" role="listbox"
+                                aria-labelledby="batch-time-label" hidden></div>
+                        </div>
                     </div>
                 </div>
                 <article class="ride-card">
