@@ -2157,8 +2157,15 @@ section {
     }
 }
 @media (max-width: 800px) {
+    .account-menu {
+        order: 1;
+        margin-left: auto;
+    }
+
     .mobile-nav {
         display: block;
+        order: 2;
+        margin-left: 0;
     }
 }
 .ride-modal-actions {
@@ -2523,8 +2530,13 @@ section {
     color: #fff;
     background: linear-gradient(145deg, #3184d2, #1f5cae);
     box-shadow: 0 10px 24px rgb(18 61 112 / .3), 0 0 0 1px rgb(31 92 174 / .12);
-    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px) scale(.92);
+    transition: opacity .18s ease, visibility .18s ease, transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
+.create-ride-fab.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
 .create-ride-fab span { font: 500 34px/1 'DM Sans', sans-serif; transform: translateY(-1px); }
 .create-ride-fab:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgb(18 61 112 / .36), 0 0 0 1px rgb(31 92 174 / .16); }
 .create-ride-fab:focus-visible { outline: 3px solid #f7b51a; outline-offset: 4px; }
@@ -2537,6 +2549,7 @@ section {
     background: linear-gradient(145deg, #f7fbff, #fff);
     box-shadow: 0 12px 28px rgb(31 104 174 / .08);
 }
+.my-accepted-rides { border-color: #dceee2; background: linear-gradient(145deg, #f7fcf8, #fff); }
 .my-ride-offers[hidden], .ride-modal-request[hidden], .driver-chat[hidden] { display: none !important; }
 .my-ride-offers-heading { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 14px; }
 .my-ride-offers-heading .label { margin-bottom: 4px; }
@@ -2559,8 +2572,63 @@ section {
 .my-ride-offer-seats { flex: 0 0 auto; padding: 8px 11px; border-radius: 99px; color: #28744a; background: #e8f7ee; font-size: 12px; font-weight: 700; }
 .my-ride-offer-vehicle { flex: 0 0 auto; padding: 8px 11px; border-radius: 99px; color: #245d9b; background: #e9f3ff; font-size: 12px; font-weight: 700; }
 .my-ride-offer-view { flex: 0 0 auto; }
+.my-accepted-ride-driver { color: #245d9b !important; font-weight: 700; }
+.my-accepted-ride-status { color: #28744a; background: #e8f7ee; }
+.ride-modal-own-offer .ride-modal-layout { grid-template-columns: minmax(0, 1fr); }
 .ride-modal-own-offer .ride-detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .ride-detail-item[hidden] { display: none !important; }
+
+.batch-filters {
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.batch-filter {
+    display: grid;
+    min-width: 165px;
+    gap: 5px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+}
+.batch-filter select {
+    width: 100%;
+    min-height: 42px;
+    padding: 0 34px 0 12px;
+    border: 1px solid #d6e5f4;
+    border-radius: 12px;
+    color: var(--ink);
+    background: linear-gradient(145deg, #fff, #f5faff);
+    font: 600 13px 'DM Sans', sans-serif;
+}
+.batch-filter select:focus-visible {
+    outline: 3px solid rgb(49 132 210 / .24);
+    outline-offset: 2px;
+    border-color: #80b3e2;
+}
+.ride-card[hidden] { display: none !important; }
+.batch-filter-empty {
+    margin: 14px 0 0;
+    padding: 18px;
+    border: 1px dashed #c8dced;
+    border-radius: 16px;
+    color: var(--muted);
+    background: rgb(255 255 255 / .72);
+    text-align: center;
+    font-size: 14px;
+}
+.batch-filter-empty[hidden] { display: none !important; }
+
+@media (max-width: 800px) {
+    .batch-filters { justify-content: flex-start; margin-top: 14px; }
+}
+@media (max-width: 480px) {
+    .batch-filters { display: grid; grid-template-columns: 1fr 1fr; }
+    .batch-filter { min-width: 0; }
+    .batch-filter select { font-size: 12px; padding-left: 9px; }
+}
 
 .create-ride-modal {
     width: min(920px, calc(100% - 32px));

@@ -66,13 +66,39 @@
                 </div>
                 <div class="my-ride-offers-list" id="my-ride-offers-list"></div>
             </section>
+            <section class="my-ride-offers my-accepted-rides" id="my-accepted-rides" aria-labelledby="my-accepted-rides-title" aria-live="polite" hidden>
+                <div class="my-ride-offers-heading">
+                    <div>
+                        <div class="label">Passenger dashboard</div>
+                        <h2 id="my-accepted-rides-title">Your accepted rides</h2>
+                    </div>
+                    <p>Rides you accept appear here.</p>
+                </div>
+                <div class="my-ride-offers-list" id="my-accepted-rides-list"></div>
+            </section>
             <div class="rides-wrap">
                 <div class="rides-heading">
                     <div>
                         <div class="label">Travel together</div>
                         <h2 class="heading" id="rides-heading">Standard Batches</h2>
                     </div>
-                    <p class="sub">Find a seat for an upcoming service.</p>
+                    <div class="batch-filters" role="group" aria-label="Filter Standard Batches">
+                        <label class="batch-filter" for="batch-type-filter">
+                            <span>Gathering type</span>
+                            <select id="batch-type-filter">
+                                <option value="all">All gathering types</option>
+                                <option value="prayer-meeting">Prayer meetings</option>
+                                <option value="worship-service">Worship service</option>
+                                <option value="thanksgiving">Thanksgiving</option>
+                            </select>
+                        </label>
+                        <label class="batch-filter" for="batch-time-filter">
+                            <span>Batch time</span>
+                            <select id="batch-time-filter">
+                                <option value="all">Any time</option>
+                            </select>
+                        </label>
+                    </div>
                 </div>
                 <article class="ride-card">
                     <div class="ride-date" aria-label="Wednesday at 4:00 AM">
@@ -349,6 +375,7 @@
                         data-ride-map-destination="MCGI CHAPEL, XQ66+66V, Apalit, Pampanga"
                         data-ride-vehicle="Motorcycle" data-ride-seats="1 seat available">View Available Rides</button>
                 </article>
+                <p class="batch-filter-empty" id="batch-filter-empty" role="status" hidden>No gatherings match these filters.</p>
             </div>
         </section>
     </main>
@@ -379,7 +406,7 @@
                 <div class="label">Ride details</div>
                 <h2 id="ride-modal-title"></h2>
             </div>
-            <a class="button ride-modal-request" href="auth/login.html">Request a ride</a>
+            <button class="button ride-modal-request" type="button">Accept ride</button>
             <button class="ride-modal-close" type="button" aria-label="Close ride details">×</button>
         </div>
         <div class="ride-modal-layout">
@@ -498,8 +525,10 @@
     <a class="create-ride-fab" href="auth/login.html" data-create-ride aria-label="Create a ride" title="Create a ride">
         <span aria-hidden="true">+</span>
     </a>
+    <script src="scroll-fab.js"></script>
     <script src="app.js"></script>
     <script src="ride-details.js"></script>
+    <script src="batch-filters.js"></script>
     <script src="ride-requests.js"></script>
 </body>
 

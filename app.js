@@ -1,20 +1,21 @@
 (function () {
     const userEmail = sessionStorage.getItem('pagibigRideUserEmail')?.trim().toLowerCase();
     const isSignedIn = sessionStorage.getItem('pagibigRideSignedIn') === 'true' && Boolean(userEmail);
-    const clearRideOffers = () => {
-        Object.keys(sessionStorage).filter((key) => key.startsWith('pagibigRideOffers')).forEach((key) => sessionStorage.removeItem(key));
-        Object.keys(localStorage).filter((key) => key.startsWith('pagibigRideOffers')).forEach((key) => localStorage.removeItem(key));
+    const clearUserRideData = () => {
+        const rideDataPrefixes = ['pagibigRideOffers', 'pagibigRideAccepted:'];
+        Object.keys(sessionStorage).filter((key) => rideDataPrefixes.some((prefix) => key.startsWith(prefix))).forEach((key) => sessionStorage.removeItem(key));
+        Object.keys(localStorage).filter((key) => rideDataPrefixes.some((prefix) => key.startsWith(prefix))).forEach((key) => localStorage.removeItem(key));
     };
     const signOut = (event) => {
         event.preventDefault();
-        clearRideOffers();
+        clearUserRideData();
         sessionStorage.removeItem('pagibigRideSignedIn');
         sessionStorage.removeItem('pagibigRideUserEmail');
         window.location.href = 'auth/login.html';
     };
 
     if (!isSignedIn) {
-        clearRideOffers();
+        clearUserRideData();
         sessionStorage.removeItem('pagibigRideSignedIn');
         sessionStorage.removeItem('pagibigRideUserEmail');
         return;
