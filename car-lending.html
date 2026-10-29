@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7fbff">
+    <meta name="description"
+        content="Share a car with the PagibigRide community or find a car to borrow for a gathering.">
+    <title>Car lending — PagibigRide</title>
+    <link rel="icon" type="image/png" href="pagibigride-submark.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="car-lending-page">
+    <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="PagibigRide home">
+            <img class="brand-logo" src="pagibigride-submark.png" alt="">
+            <img class="brand-wordmark" src="pagibigride-wordmark.png" alt="PagibigRide" width="180" height="40">
+        </a>
+        <div class="navlinks">
+            <a class="about-nav-link" href="about.html">About us</a>
+            <a class="button alt" href="auth/login.html" data-guest-only>Sign in</a>
+            <a class="button" href="auth/signup.html" data-guest-only>Join the community</a>
+        </div>
+        <details class="mobile-nav">
+            <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
+            <div class="mobile-menu-panel">
+                <a href="about.html">About us</a>
+                <a href="auth/login.html" data-guest-only>Sign in</a>
+                <a class="mobile-menu-join" href="auth/signup.html" data-guest-only>Join the community</a>
+            </div>
+        </details>
+        <div class="account-menu" data-account-menu hidden>
+            <button class="account-avatar" type="button" data-account-avatar aria-label="Open account menu"
+                aria-haspopup="true" aria-expanded="false" aria-controls="account-dropdown">
+                <span data-account-initial aria-hidden="true"></span>
+            </button>
+            <div class="account-dropdown" id="account-dropdown" role="menu" hidden>
+                <div class="account-dropdown-email" data-account-email></div>
+                <button class="account-logout" type="button" role="menuitem" data-account-logout>Log out</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="car-lending-main">
+        <a class="car-lending-back" href="index.html#rides">← Back to rides</a>
+        <section class="car-lendings" id="car-lendings" aria-labelledby="car-lendings-title">
+            <div class="car-lendings-heading">
+                <div>
+                    <div class="label">Community cars</div>
+                    <h1 id="car-lendings-title">Cars available to borrow</h1>
+                </div>
+                <button class="button car-lending-add" type="button" data-car-lending-open aria-haspopup="dialog"
+                    aria-controls="car-lending-modal">List a car</button>
+            </div>
+            <p class="car-lendings-intro">Find a car for your next gathering, or lend yours to someone in the community.
+            </p>
+            <p class="car-lendings-demo-note">Demo mode: listings and borrow requests stay in this browser; no real
+                bookings are made.</p>
+            <p class="car-lendings-empty" id="car-lendings-empty" role="status">No cars listed yet. Add one to try the
+                lending flow.</p>
+            <p class="car-lendings-status" id="car-lendings-status" role="status" aria-live="polite"></p>
+            <div class="car-lendings-list" id="car-lendings-list"></div>
+        </section>
+
+        <dialog class="create-ride-modal car-lending-modal" id="car-lending-modal"
+            aria-labelledby="car-lending-form-title">
+            <div class="create-ride-heading">
+                <div>
+                    <div class="label">Car lending · demo</div>
+                    <h2 id="car-lending-form-title">List your car</h2>
+                    <p>Share your car, pickup spot, and when it is available.</p>
+                </div>
+                <button class="ride-modal-close car-lending-close" type="button"
+                    aria-label="Close car listing form">×</button>
+            </div>
+            <form class="car-lending-form" id="car-lending-form">
+                <div class="car-lending-fields">
+                    <div class="field">
+                        <label for="car-make">Brand</label>
+                        <input id="car-make" name="make" type="text" placeholder="e.g. Toyota" maxlength="40" required>
+                    </div>
+                    <div class="field">
+                        <label for="car-model">Model</label>
+                        <input id="car-model" name="model" type="text" placeholder="e.g. Vios" maxlength="50" required>
+                    </div>
+                    <div class="field location-autocomplete car-pickup-autocomplete">
+                        <label for="car-area">Pickup area</label>
+                        <input id="car-area" name="area" type="text" placeholder="Start typing a place or address"
+                            maxlength="120" autocomplete="off" role="combobox" aria-autocomplete="list"
+                            aria-expanded="false" aria-controls="car-pickup-suggestions" required>
+                        <div class="location-suggestions" id="car-pickup-suggestions" role="listbox" hidden></div>
+                    </div>
+                    <div class="field">
+                        <label for="car-availability">Availability</label>
+                        <select id="car-availability" name="availability" required>
+                            <option value="" selected disabled>Choose availability</option>
+                            <option>Weekdays</option>
+                            <option>Weekends</option>
+                            <option>Any day</option>
+                            <option>By arrangement</option>
+                        </select>
+                    </div>
+                </div>
+                <section class="car-pickup-map-panel" aria-labelledby="car-pickup-map-title">
+                    <div class="ride-map-heading">
+                        <strong id="car-pickup-map-title">Pickup location map</strong>
+                        <a class="car-pickup-map-link" id="car-pickup-map-link" href="#" aria-disabled="true"
+                            target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a>
+                    </div>
+                    <p id="car-pickup-map-hint" role="status">Choose a suggested pickup place to preview it on the map.
+                    </p>
+                    <iframe class="ride-map car-pickup-map" id="car-pickup-map"
+                        title="Map preview of the selected pickup area" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+                </section>
+                <div class="car-lending-form-footer">
+                    <p>Demo listing only · no bookings are made.</p>
+                    <button class="button" type="submit">Publish listing</button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="car-lending.js"></script>
+</body>
+
+</html>

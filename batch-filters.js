@@ -12,6 +12,21 @@
     const timeOptions = [{ value: 'all', label: 'Any time' }, ...times.map((time) => ({ value: time, label: time }))];
     const timeFilter = createFilter('batch-time-filter', 'batch-time-options', timeOptions, 'all');
     const filters = [typeFilter, timeFilter];
+    const filterToggle = document.querySelector('#batch-filter-toggle');
+    const ridesHeading = document.querySelector('.rides-heading');
+
+    filterToggle.addEventListener('click', () => {
+        setMobileFiltersOpen(filterToggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        if (filterToggle.getAttribute('aria-expanded') === 'true') setMobileFiltersOpen(false, true);
+    });
+
+    window.matchMedia('(max-width: 800px)').addEventListener('change', (event) => {
+        if (!event.matches) setMobileFiltersOpen(false);
+    });
 
     function getBatchTime(card) {
         const label = card.querySelector('.ride-date')?.getAttribute('aria-label') || '';
@@ -77,6 +92,7 @@
             else if (event.key === 'End') nextIndex = choices.length - 1;
             else if (event.key === 'Escape') {
                 event.preventDefault();
+                event.stopPropagation();
                 closeFilter(filter, true);
                 return;
             } else {
@@ -110,6 +126,14 @@
         if (returnFocus) filter.trigger.focus();
     }
 
+    function setMobileFiltersOpen(open, returnFocus = false) {
+        ridesHeading.dataset.filtersOpen = String(open);
+        filterToggle.setAttribute('aria-expanded', String(open));
+        filterToggle.setAttribute('aria-label', `${open ? 'Hide' : 'Show'} batch filters`);
+        if (!open) filters.forEach((filter) => closeFilter(filter));
+        if (returnFocus) filterToggle.focus();
+    }
+
     function applyFilters() {
         let visibleCount = 0;
         batchCards.forEach((card) => {
@@ -124,5 +148,6 @@
 
     document.addEventListener('click', (event) => {
         if (!event.target.closest('.batch-filter')) filters.forEach((filter) => closeFilter(filter));
+        if (!event.target.closest('.rides-heading')) setMobileFiltersOpen(false);
     });
 })();

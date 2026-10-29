@@ -2516,6 +2516,80 @@ section {
 .create-ride-callout .button { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; }
 .create-ride-callout .button span { font-size: 18px; line-height: 14px; transition: transform .2s ease; }
 .create-ride-callout .button:hover span { transform: translateX(3px); }
+.car-lending-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 18px;
+    margin: 0 0 28px;
+    padding: 22px 28px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid #efd06e;
+    border-radius: 20px;
+    color: var(--ink);
+    background: linear-gradient(115deg, #fff5cb, #ffe79b 72%, #ffdd72);
+    box-shadow: 0 12px 26px rgb(161 123 25 / .12);
+    text-decoration: none;
+}
+.car-lending-card:focus-visible { outline: 3px solid rgb(49 132 210 / .36); outline-offset: 3px; }
+.car-lending-card::after {
+    position: absolute;
+    z-index: -1;
+    top: -112px;
+    right: -76px;
+    width: 240px;
+    height: 240px;
+    border: 24px solid rgb(255 255 255 / .28);
+    border-radius: 50%;
+    content: '';
+    pointer-events: none;
+}
+.car-lending-icon {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / .76);
+    border-radius: 17px;
+    color: #174e84;
+    background: rgb(255 255 255 / .68);
+}
+.car-lending-icon svg { width: 38px; height: 38px; }
+.car-lending-copy { min-width: 0; z-index: 1; }
+.car-lending-copy .label { margin-bottom: 3px; color: #9c6500; }
+.car-lending-copy h2 { margin: 0 0 4px; color: #164678; font: 700 clamp(20px, 2.4vw, 25px)/1.2 Outfit, sans-serif; }
+.car-lending-copy p { max-width: 620px; margin: 0; color: #5b6270; font-size: 13px; line-height: 1.5; }
+.car-lending-action {
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #174e84, #12356b);
+    box-shadow: 0 8px 17px rgb(18 53 107 / .2);
+}
+.car-lending-action:hover { box-shadow: 0 12px 22px rgb(18 53 107 / .26); }
+.car-lending-action span { font-size: 17px; transition: transform .2s ease; }
+.car-lending-action:hover span { transform: translateX(3px); }
+.car-lendings { max-width: 1040px; margin: 0 auto 30px; }
+.car-lendings-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 6px; }
+.car-lendings-heading .label { margin-bottom: 2px; }
+.car-lendings-heading h1, .car-lendings-heading h2 { margin: 0; color: var(--navy); font: 700 22px/1.2 Outfit, sans-serif; }
+.car-lendings-intro { margin: 0 0 4px; color: #4e657b; font-size: 13px; line-height: 1.5; }
+.car-lending-add { flex: 0 0 auto; padding: 10px 16px; font-size: 13px; }
+.car-lendings-demo-note { margin: 0 0 12px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+.car-lendings-empty { margin: 0; padding: 17px; border: 1px dashed #d6e5d2; border-radius: 14px; color: #55745e; background: #fbfdf5; font-size: 13px; text-align: center; }
+.car-lendings-empty[hidden] { display: none !important; }
+.car-lendings-status:not(:empty) { margin: 0 0 10px; color: #28744a; font-size: 12px; }
+.car-lendings-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.car-lending-listing { min-width: 0; padding: 16px; border: 1px solid #dce8cb; border-radius: 16px; background: linear-gradient(145deg, #fff, #fbfdf5); box-shadow: 0 7px 18px rgb(46 78 34 / .07); }
+.car-lending-listing-title { margin: 0 0 8px; color: #164678; font: 700 18px/1.25 Outfit, sans-serif; overflow-wrap: anywhere; }
+.car-lending-listing-area, .car-lending-listing-availability { margin: 4px 0; color: #4e657b; font-size: 12px; line-height: 1.4; }
+.car-lending-request { width: 100%; margin-top: 12px; padding: 10px 14px; font-size: 12px; }
+.car-lending-request:disabled { color: #28744a; background: #e6f5e9; box-shadow: none; cursor: default; transform: none; }
 .create-ride-fab {
     position: fixed;
     z-index: 30;
@@ -2588,6 +2662,22 @@ section {
     gap: 10px;
 }
 .rides-heading { position: relative; z-index: 20; }
+.batch-filter-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid #d6e5f4;
+    border-radius: 12px;
+    color: #245d9b;
+    background: #fff;
+    font: 700 13px 'DM Sans', sans-serif;
+    cursor: pointer;
+}
+.batch-filter-toggle svg { width: 19px; height: 19px; flex: 0 0 19px; }
+.batch-filter-toggle:focus-visible { outline: 3px solid rgb(49 132 210 / .24); outline-offset: 2px; }
 .batch-filter {
     display: grid;
     position: relative;
@@ -2676,12 +2766,35 @@ section {
 .batch-filter-empty[hidden] { display: none !important; }
 
 @media (max-width: 800px) {
-    .batch-filters { justify-content: flex-start; margin-top: 14px; }
+    .rides-heading { display: flex; align-items: flex-end; gap: 10px; }
+    .rides-heading > div:first-child { min-width: 0; }
+    .batch-filter-toggle { display: inline-flex; flex: 0 0 auto; margin: 0 0 2px auto; }
+    .batch-filters {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        z-index: 30;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: min(340px, calc(100vw - 32px));
+        margin: 0;
+        padding: 12px;
+        gap: 10px;
+        border: 1px solid #d6e5f4;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0 14px 30px rgb(19 54 92 / .18);
+    }
+    .rides-heading[data-filters-open="true"] .batch-filters { display: grid; }
+    .batch-filter { min-width: 0; }
 }
 @media (max-width: 480px) {
-    .batch-filters { display: grid; grid-template-columns: 1fr 1fr; }
-    .batch-filter { min-width: 0; }
-    .batch-filter-trigger { font-size: 12px; padding-inline: 9px; }
+    .batch-filter-toggle { width: 40px; min-width: 40px; padding: 0; }
+    .batch-filter-toggle-label { display: none; }
+}
+@media (max-width: 380px) {
+    .batch-filters { grid-template-columns: minmax(0, 1fr); }
+    .batch-filter-trigger { font-size: 13px; padding-inline: 12px; }
 }
 
 .create-ride-modal {
@@ -2696,6 +2809,7 @@ section {
     box-shadow: 0 24px 70px rgb(23 64 108 / .24);
 }
 .create-ride-modal::backdrop { background: rgb(21 47 74 / .44); backdrop-filter: blur(5px); }
+.car-lending-modal { width: min(700px, calc(100% - 32px)); max-width: 700px; }
 .create-ride-heading { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
 .create-ride-heading h2 { margin: 3px 0 5px; color: var(--navy); font: 700 28px/1.15 Outfit, sans-serif; }
 .create-ride-heading p { margin: 0; color: var(--muted); font-size: 13px; }
@@ -2742,14 +2856,37 @@ section {
 .location-suggestion-option:last-child { border-bottom: 0; }
 .location-suggestion-option:hover, .location-suggestion-option[aria-selected="true"] { background: #f0f7ff; }
 .location-suggestion-message { padding: 11px 12px; color: var(--muted); font-size: 12px; line-height: 1.4; }
-.location-attribution { display: block; margin-top: 5px; color: #70859b; font-size: 10px; line-height: 1.3; }
-.location-attribution a { color: #376b9c; text-decoration: underline; text-underline-offset: 2px; }
 .create-ride-map-heading a[aria-disabled="true"] { color: #91a5ba; cursor: not-allowed; }
 .create-ride-route { padding: 13px; border: 1px solid #dceaf7; border-radius: 16px; background: #fff; }
 .create-ride-route #create-route-hint { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
 .create-ride-map { min-height: 230px; background: #eef5fb; }
 .create-ride-footer { display: flex; justify-content: flex-end; align-items: center; gap: 14px; }
 .create-ride-footer p { flex: 1; margin: 0; color: #28744a; font-size: 13px; }
+.car-lending-form { display: grid; gap: 12px; }
+.car-pickup-map-panel { min-width: 0; padding: 1px 12px 12px; border: 1px solid #dceaf7; border-radius: 15px; background: #fff; }
+.car-pickup-map-panel .ride-map-heading { margin: 10px 0 6px; }
+.car-pickup-map-panel > p { margin: 0 0 8px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+.car-pickup-map { height: 180px; min-height: 0; border-radius: 11px; }
+.car-pickup-map[hidden] { display: none; }
+.car-pickup-map-link[aria-disabled="true"] { color: #91a5ba; cursor: not-allowed; }
+.car-lending-location-link { display: inline-block; margin: 0 0 5px; color: #376b9c; font-size: 11px; font-weight: 700; text-decoration: underline; }
+.car-lending-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 14px; }
+.car-lending-fields .field { min-width: 0; margin-bottom: 12px; }
+.car-lending-fields label { display: block; margin-bottom: 6px; color: #345a7d; font-size: 12px; font-weight: 700; }
+.car-lending-fields input, .car-lending-fields select {
+    width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid #d5e3f0; border-radius: 12px;
+    color: var(--ink); background: #fff; font: 14px 'DM Sans', sans-serif;
+}
+.car-lending-fields input:focus, .car-lending-fields select:focus {
+    outline: 0; border-color: #5a9add; box-shadow: 0 0 0 3px rgb(50 130 211 / .13);
+}
+.car-lending-form-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 3px; }
+.car-lending-form-footer p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.4; }
+.car-lending-form-footer .button { flex: 0 0 auto; }
+.car-lending-main { max-width: 1100px; min-height: calc(100vh - 78px); margin: 0 auto; padding: 34px 30px 70px; }
+.car-lending-back { display: inline-block; margin-bottom: 22px; color: #4b6785; font-size: 13px; font-weight: 700; }
+.car-lending-back:hover { color: #c88400; }
+.car-lending-main .car-lendings { margin: 0 auto; }
 
 @media (max-width: 760px) {
     .create-ride-fields { grid-template-columns: 1fr 1fr; }
@@ -2760,12 +2897,26 @@ section {
     .create-ride-area { min-height: 270px; margin-bottom: 18px; padding: 15px 16px; border-radius: 16px; }
     .create-ride-callout { min-height: 240px; padding: 22px 18px 24px; }
     .create-ride-callout p { max-width: 290px; font-size: 13px; }
+    .car-lending-card { grid-template-columns: 44px minmax(0, 1fr); gap: 12px; margin-bottom: 23px; padding: 18px; border-radius: 16px; }
+    .car-lending-icon { width: 44px; height: 44px; border-radius: 13px; }
+    .car-lending-icon svg { width: 31px; height: 31px; }
+    .car-lending-copy h2 { font-size: 21px; }
+    .car-lending-copy p { font-size: 12px; }
+    .car-lending-action { grid-column: 2; justify-self: start; padding: 10px 16px; font-size: 13px; }
+    .car-lendings { margin-bottom: 24px; }
+    .car-lendings-heading h1, .car-lendings-heading h2 { font-size: 20px; }
+    .car-lending-add { padding: 9px 12px; font-size: 12px; }
+    .car-lending-main { min-height: calc(100vh - 66px); padding: 24px 20px 48px; }
+    .car-lending-back { margin-bottom: 17px; }
     .create-ride-modal { width: calc(100% - 20px); padding: 18px; border-radius: 18px; }
+    .car-lending-modal { width: calc(100% - 20px); max-height: calc(100dvh - 20px); }
     .create-ride-heading h2 { font-size: 24px; }
     .create-ride-fields { grid-template-columns: 1fr; }
     .create-ride-fields .field:nth-child(3) { grid-column: auto; }
     .create-ride-map { min-height: 190px; }
     .create-ride-footer { align-items: stretch; flex-direction: column; }
+    .car-lending-fields { grid-template-columns: minmax(0, 1fr); }
+    .car-lending-form-footer { align-items: stretch; flex-direction: column; }
     .my-ride-offers { padding: 16px; border-radius: 16px; }
     .my-ride-offers-heading { display: block; }
     .my-ride-offers-heading p { margin-top: 5px; }
